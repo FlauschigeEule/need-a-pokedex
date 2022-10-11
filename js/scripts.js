@@ -1,3 +1,5 @@
+// This is an array of objects - my Pokemon list
+
 let pokemonList = [
     {
         name: 'Balbasaur',
@@ -44,7 +46,7 @@ let pokemonList = [
     {
         name: 'Ponyta',
         types: 'fire',
-        height: 1,
+        height: 1.0,
         weight: 30
     },
     {
@@ -72,3 +74,13 @@ let pokemonList = [
         weight: 9.9
     }
 ];
+
+// This is a for loop that iterates over each item in the Pokemon list and highlights the biggest Pokemon
+
+for (let i=0; i < pokemonList.length; i++) {
+    if (pokemonList[i].height >= 1.0) {
+        document.write(pokemonList[i].name + ' ' + '(height: ' + pokemonList[i].height + ')' + ' ' + '- Wow, that\'s big!' + '<br>');
+    } else {
+        document.write(pokemonList[i].name + ' ' + '(height: ' + pokemonList[i].height + ')' + '<br>');
+    }
+};
