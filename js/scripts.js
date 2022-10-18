@@ -77,10 +77,19 @@ let pokemonList = [
 
 // This is a for loop that iterates over each item in the Pokemon list and highlights the biggest Pokemon
 
-for (let i=0; i < pokemonList.length; i++) {
-    if (pokemonList[i].height >= 1.0) {
-        document.write(pokemonList[i].name + ' ' + '(height: ' + pokemonList[i].height + ')' + ' ' + '- Wow, that\'s big!' + '<br>');
-    } else {
-        document.write(pokemonList[i].name + ' ' + '(height: ' + pokemonList[i].height + ')' + '<br>');
-    }
-};
+// for (let i=0; i < pokemonList.length; i++) {
+//     if (pokemonList[i].height >= 1.0) {
+//         document.write(pokemonList[i].name + ' ' + '(height: ' + pokemonList[i].height + ')' + ' ' + '- Wow, that\'s big!' + '<br>');
+//     } else {
+//         document.write(pokemonList[i].name + ' ' + '(height: ' + pokemonList[i].height + ')' + '<br>');
+//     }
+// };
+
+// This will be a forEach loop that iterates over every Pokemon in the list 
+
+pokemonList.forEach(function(pokemon) {
+    console.log(pokemon.name + ' is a pokemon of the type ' + pokemon.types + ' and its height is ' + pokemon.height + '! The pokemon weighs in at ' + pokemon.weight + '!');
+    document.write(pokemon.name + ' ' + '(height:' + pokemon.height + ')' + '<br>');
+}
+);
+
