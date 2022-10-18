@@ -1,81 +1,103 @@
-// This is an array of objects - my Pokemon list
+// This is an IIFE of the Pokemon list
 
-let pokemonList = [
-    {
-        name: 'Balbasaur',
-        types: ['grass', 'fire'],
-        height: 0.7,
-        weight: 6.9
-    },
-    {
-        name: 'Charmander',
-        types: 'fire',
-        height: 0.6,
-        weight: 8.5
-    },
-    {
-        name: 'Eevee',
-        types: 'normal',
-        height: 0.3,
-        weight: 6.5
-    },
-    {
-        name: 'Growlithe',
-        types: 'fire',
-        height: 0.7,
-        weight: 19
-    },
-    {
-        name: 'Hoothoot',
-        types: ['flying', 'normal'],
-        height: 0.7,
-        weight: 21.2
-    },
-    {
-        name: 'Nidoran',
-        types: 'poison',
-        height: 0.4,
-        weight: 7
-    },
-    {
-        name: 'Pikachu',
-        types: 'electric',
-        height: 0.4,
-        weight: 6
-    }, 
-    {
-        name: 'Ponyta',
-        types: 'fire',
-        height: 1.0,
-        weight: 30
-    },
-    {
-        name: 'Psyduck',
-        types: 'water',
-        height: 0.8,
-        weight: 19.6
-    },
-    {
-        name: 'Sandshrew',
-        types: 'ground',
-        height: 0.6,
-        weight: 12
-    },
-    {
-        name: 'Squirtle',
-        types: 'water',
-        height: 0.5,
-        weight: 9
-    },
-    {
-        name: 'Vulpix',
-        types: 'fire',
-        height: 0.6,
-        weight: 9.9
+let pokemonRepository = (function() {
+    let pokemonList = [
+        {
+            name: 'Balbasaur',
+            types: ['grass', 'fire'],
+            height: 0.7,
+            weight: 6.9
+        },
+        {
+            name: 'Charmander',
+            types: 'fire',
+            height: 0.6,
+            weight: 8.5
+        },
+        {
+            name: 'Eevee',
+            types: 'normal',
+            height: 0.3,
+            weight: 6.5
+        },
+        {
+            name: 'Growlithe',
+            types: 'fire',
+            height: 0.7,
+            weight: 19
+        },
+        {
+            name: 'Hoothoot',
+            types: ['flying', 'normal'],
+            height: 0.7,
+            weight: 21.2
+        },
+        {
+            name: 'Nidoran',
+            types: 'poison',
+            height: 0.4,
+            weight: 7
+        },
+        {
+            name: 'Pikachu',
+            types: 'electric',
+            height: 0.4,
+            weight: 6
+        }, 
+        {
+            name: 'Ponyta',
+            types: 'fire',
+            height: 1.0,
+            weight: 30
+        },
+        {
+            name: 'Psyduck',
+            types: 'water',
+            height: 0.8,
+            weight: 19.6
+        },
+        {
+            name: 'Sandshrew',
+            types: 'ground',
+            height: 0.6,
+            weight: 12
+        },
+        {
+            name: 'Squirtle',
+            types: 'water',
+            height: 0.5,
+            weight: 9
+        },
+        {
+            name: 'Vulpix',
+            types: 'fire',
+            height: 0.6,
+            weight: 9.9 
+        }
+    ];
+
+    function add(pokemon) {
+        if (
+            typeOf pokemon === 'object' && 'name' in pokemon && 'height' in pokemon
+        ){
+        pokemonList.push(pokemon);
+        } else {
+            console.log('This is not a valid pokemon!');
+        }
     }
-];
 
-// This is a for loop that iterates over each item in the Pokemon list and highlights the biggest Pokemon
+    function getAll() {
+        return pokemonList;
+    }
+
+    return {
+        add: add,
+        getAll: getAll
+    };
+})();
+
+
+// This is a for loop that iterates over each item in the Pokemon list and highlights the biggest Pokemon. It will be replaced with a forEach loop later
 
 // for (let i=0; i < pokemonList.length; i++) {
 //     if (pokemonList[i].height >= 1.0) {
@@ -87,9 +109,14 @@ let pokemonList = [
 
 // This will be a forEach loop that iterates over every Pokemon in the list 
 
-pokemonList.forEach(function(pokemon) {
-    console.log(pokemon.name + ' is a pokemon of the type ' + pokemon.types + ' and its height is ' + pokemon.height + '! The pokemon weighs in at ' + pokemon.weight + '!');
-    document.write(pokemon.name + ' ' + '(height:' + pokemon.height + ')' + '<br>');
-}
-);
+// pokemonList.forEach(function(pokemon) {
+//     console.log(pokemon.name + ' is a pokemon of the type ' + pokemon.types + ' and its height is ' + pokemon.height + '! The pokemon weighs in at ' + pokemon.weight + '!');
+//     document.write(pokemon.name + ' ' + '(height:' + pokemon.height + ')' + '<br>');
+// }
+// );
+
+//This will be the updated forEach loop to cope with the IIFE creation
+
+console.log(pokemonRepository.getAll());
+document.write(pokemonRepository.getAll());
 
