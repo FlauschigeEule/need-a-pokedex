@@ -1,6 +1,8 @@
 // This is an IIFE of the Pokemon list
 
 let pokemonRepository = (function() {
+
+    //This is the list of Pokemon
     let pokemonList = [
         {
             name: 'Balbasaur',
@@ -76,47 +78,56 @@ let pokemonRepository = (function() {
         }
     ];
 
+    //ensure pokemon is an object with a name, height, and types and allow it to be added to the pokemonList
     function add(pokemon) {
         if (
-            typeOf pokemon === 'object' && 'name' in pokemon && 'height' in pokemon
-        ){
+            typeof pokemon === 'object' && 
+            'name' in pokemon && 
+            'height' in pokemon &&
+            'types' in pokemon
+        ) {
         pokemonList.push(pokemon);
         } else {
             console.log('This is not a valid pokemon!');
         }
     }
 
+    //function to return all Pokemon from the list
     function getAll() {
         return pokemonList;
     }
 
+    //create and append list item and button, assign button text and add an event listener 
+    function addListItem(pokemon) {
+        let pokemonList1 = document.querySelector('.pokemon-list');
+        let listItem = document.createElement('li');
+        let button = document.createElement('button');
+        button.innerText = pokemon.name;
+        button.classList.add('pokemonList_item');
+        button.addEventListener('click', function showDetails(pokemon) {
+            console.log(pokemon);
+        });
+        listItem.appendChild(button);
+        pokemonList1.appendChild(listItem);
+    }
+
+    //function for clicking on pokemon button
+    function showDetails(pokemon) {
+        console.log(pokemon);
+    }
+
+    //return statement
     return {
         add: add,
-        getAll: getAll
+        getAll: getAll,
+        addListItem: addListItem,
+        showDetails: showDetails
     };
 })();
 
-
-// This is a for loop that iterates over each item in the Pokemon list and highlights the biggest Pokemon. It will be replaced with a forEach loop later
-
-// for (let i=0; i < pokemonList.length; i++) {
-//     if (pokemonList[i].height >= 1.0) {
-//         document.write(pokemonList[i].name + ' ' + '(height: ' + pokemonList[i].height + ')' + ' ' + '- Wow, that\'s big!' + '<br>');
-//     } else {
-//         document.write(pokemonList[i].name + ' ' + '(height: ' + pokemonList[i].height + ')' + '<br>');
-//     }
-// };
-
-// This will be a forEach loop that iterates over every Pokemon in the list 
-
-// pokemonList.forEach(function(pokemon) {
-//     console.log(pokemon.name + ' is a pokemon of the type ' + pokemon.types + ' and its height is ' + pokemon.height + '! The pokemon weighs in at ' + pokemon.weight + '!');
-//     document.write(pokemon.name + ' ' + '(height:' + pokemon.height + ')' + '<br>');
-// }
-// );
-
-//This will be the updated forEach loop to cope with the IIFE creation
-
 console.log(pokemonRepository.getAll());
-document.write(pokemonRepository.getAll());
+
+pokemonRepository.getAll().forEach(function (pokemon){
+    pokemonRepository.addListItem(pokemon);
+});
 
