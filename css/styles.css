@@ -72,6 +72,34 @@ script {
     line-height: 1;
 }
 
+/*Styling the JS Button*/
+
+.pokemon-list {
+    list-style-type: none;
+    margin-top: 50px;
+}
+
+.pokemonList_item {
+    width: 250px;
+    height: 80px;
+    font-family: var(--secondary-font-family);
+    font-size: 2em;
+    font-variant: small-caps;
+    color: rgb(16, 16, 16);
+    background-color: var(--color-background);
+    padding: 20px;
+    margin: 15px;
+    border: none;
+    box-shadow: 2px 2px 5px 0 rgb(0, 0, 0, 0.8);
+    /* box-shadow: 2px 2px 5px 0 rgba(255, 253, 253, 0.8); */
+}
+
+.pokemonList_item:hover {
+    cursor: pointer;
+    background-color: #fe959540;
+    border-style: 1px solid #CC565C;
+}
+
 /* This section starts the media queries */
 
 @media all and (max-width:450px) {
@@ -106,5 +134,10 @@ script {
         padding-top: 15px;
         padding-left: 5px;
         padding-right: 5px;
+    }
+
+    .pokemonList_item {
+        text-align: center;
+        margin-right: 50px;
     }
 }
